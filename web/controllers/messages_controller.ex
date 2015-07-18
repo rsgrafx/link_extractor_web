@@ -6,4 +6,10 @@ defmodule LinkExtractorWeb.MessagesController do
       LinkExtractor.inject( message )
       conn |> redirect(to: "/")
     end
+
+    def index(conn, _params) do 
+      content = LinkExtractor.get_links
+      data = Poison.encode!(content)
+      text conn, data
+    end
 end
