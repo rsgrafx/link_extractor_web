@@ -38,7 +38,8 @@ defmodule LinkExtractorWeb.Mixfile do
       {:link_extractor, github: "rsgrafx/link_extractor"},
       {:poolboy, "~> 1.4"},
       {:httpoison, "~> 0.7"},
-      {:hackney, "~> 1.0"}
+      {:hackney, "~> 1.0"},
+      {:cors_plug, "~> 0.1.3"},
    ]
   end
 end
