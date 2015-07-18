@@ -2,7 +2,7 @@ defmodule LinkExtractorWeb.Router do
   use LinkExtractorWeb.Web, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_flash
     # plug :protect_from_forgery
@@ -10,13 +10,14 @@ defmodule LinkExtractorWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    post "/messages", MessagesController, :create
   end
 
   scope "/", LinkExtractorWeb do
     pipe_through :browser # Use the default browser stack
-
     get "/", PageController, :index
     post "/messages", MessagesController, :create
+    get "/messages", MessagesController, :index
   end
 
   # Other scopes may use custom stacks.
