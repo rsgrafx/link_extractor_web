@@ -29,7 +29,7 @@ config :logger, :console, format: "[$level] $message\n"
 # Configure your database
 config :link_extractor_web, LinkExtractorWeb.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "orionengleton",
+  password: "",
   database: "link_extractor_web_dev",
   size: 10 # The amount of database connections in the pool
