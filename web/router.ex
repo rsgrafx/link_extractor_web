@@ -9,6 +9,7 @@ defmodule LinkExtractorWeb.Router do
   end
 
   pipeline :api do
+    plug CORSPlug, [origin: "*"]
     plug :accepts, ["json"]
     post "/messages", MessagesController, :create
   end
@@ -21,7 +22,8 @@ defmodule LinkExtractorWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", LinkExtractorWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", LinkExtractorWeb do
+    pipe_through :api
+    resources "/posts", PostController
+  end
 end
