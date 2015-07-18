@@ -10,7 +10,7 @@ defmodule LinkExtractorWeb do
       # Start the endpoint when the application starts
       supervisor(LinkExtractorWeb.Endpoint, []),
       # Start the Ecto repository
-      worker(LinkExtractorWeb.Repo, []),
+      worker(LinkExtractorWeb.Repo, [])
       # Here you could define other workers and supervisors as children
       # worker(LinkExtractorWeb.Worker, [arg1, arg2, arg3]),
     ]
