@@ -5,7 +5,7 @@ defmodule LinkExtractorWeb.Router do
     plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_flash
-    # plug :protect_from_forgery
+    plug :protect_from_forgery
   end
 
   pipeline :api do

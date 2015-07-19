@@ -15,7 +15,7 @@ defmodule LinkExtractorWeb.Site do
     Task.async(fn -> 
       :timer.sleep(4000)
       agent_data = Agent.get( :collector, &List.first(&1) )
-      resp = LinkExtractorWeb.Repo.insert!( %LinkExtractorWeb.Site{ title: agent_data.title, url: agent_data.url } )
+      LinkExtractorWeb.Repo.insert!( %LinkExtractorWeb.Site{ title: agent_data.title, url: agent_data.url } )
     end)
   end
 
