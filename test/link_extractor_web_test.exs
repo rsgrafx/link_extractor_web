@@ -14,16 +14,14 @@ defmodule LinkExtractorWebTest do
     response = conn(:post, "/messages", @messages) |> send_request
     assert response.status == 302
     :timer.sleep(2000)
-    assert length(LinkExtractor.get_links) > 0
+    assert length( LinkExtractor.get_links ) > 0
   end
 
   test "get the results back" do
     conn(:post, "/messages", @messages) |> send_request
     response = conn(:get, "/messages") |> send_request
-    IO.puts response.resp_body
     :timer.sleep(2000) #Needed * if your making post calls that call out to an api.
     assert response.status == 200
-    IO.puts response.resp_body
     assert length( LinkExtractor.get_links ) > 0
   end
 
