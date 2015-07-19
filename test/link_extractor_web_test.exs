@@ -11,17 +11,20 @@ defmodule LinkExtractorWebTest do
   @expected_link %Link{url: "http://www.orionengleton.com", title: "Learning to Dream in Color and Code. | Orion Engleton - Web Developer specializing in Ruby, AngularJS and" }
 
   test "When parsing the email body we expect to store url" do
-
     response = conn(:post, "/messages", @messages) |> send_request
     assert response.status == 302
-    :timer.sleep(3000)
+    :timer.sleep(2000)
     assert length(LinkExtractor.get_links) > 0
   end
 
   test "get the results back" do
+    conn(:post, "/messages", @messages) |> send_request
     response = conn(:get, "/messages") |> send_request
+    IO.puts response.resp_body
+    :timer.sleep(2000) #Needed * if your making post calls that call out to an api.
     assert response.status == 200
-    assert length(LinkExtractor.get_links) > 0
+    IO.puts response.resp_body
+    assert length( LinkExtractor.get_links ) > 0
   end
 
   def post path, body do 
