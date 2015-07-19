@@ -5,7 +5,11 @@ defmodule LinkExtractorWeb.MessagesController do
     alias LinkExtractor.Link
 
     def create(conn, _params) do 
-      {:ok, message, conn} = Plug.Conn.read_body(conn)
+      case _params do
+        %{"data" => _message, "format" => _json } -> %{"data" => message, "format" => _json } = _params
+        %{"format" => "html"} -> {:ok, message, conn} = Plug.Conn.read_body(conn)
+      end
+
       LinkExtractor.inject( message )
       Site.capture_from_agent
       conn |> redirect(to: "/") # previous logic.
