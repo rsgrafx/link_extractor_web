@@ -26,7 +26,9 @@ defmodule LinkExtractorWebTest do
   end
 
   def post path, body do 
-    HTTPoison.post "http://localhost:4001#{path}", body
+    HTTPoison.request(:post, "http://localhost:4001#{path}",
+                      %{"data" => body, "format" => "json"},
+                      [{"Accept", "application/json"}])
   end
 
   def get path do 
