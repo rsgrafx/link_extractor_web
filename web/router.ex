@@ -11,14 +11,14 @@ defmodule LinkExtractorWeb.Router do
   pipeline :api do
     plug CORSPlug, [origin: "*"]
     plug :accepts, ["json"]
-    post "/messages", MessagesController, :create
+    # post "/messages", MessagesController, :create
   end
 
   scope "/", LinkExtractorWeb do
     pipe_through :browser # Use the default browser stack
     get "/", PageController, :index
     post "/messages", MessagesController, :create
-    get "/messages", MessagesController, :index
+    get "/messages",  MessagesController, :index
   end
 
   # Other scopes may use custom stacks.
