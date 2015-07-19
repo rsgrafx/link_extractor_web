@@ -1,10 +1,14 @@
 defmodule LinkExtractorWeb.MessagesController do
     use LinkExtractorWeb.Web, :controller
 
+    alias LinkExtractorWeb.Site
+    alias LinkExtractor.Link
+
     def create(conn, _params) do 
       {:ok, message, conn} = Plug.Conn.read_body(conn)
       LinkExtractor.inject( message )
-      conn |> redirect(to: "/")
+      # Site.capture_from_agent |> Repo.insert
+      conn |> redirect(to: "/") # previous logic.
     end
 
     def index(conn, _params) do 
