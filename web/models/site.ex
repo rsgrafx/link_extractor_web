@@ -1,7 +1,6 @@
 defmodule LinkExtractorWeb.Site do
-  
+
   use LinkExtractorWeb.Web, :model
-  alias Ecto.Repo
 
   schema "sites" do
     field :title, :string
@@ -15,7 +14,7 @@ defmodule LinkExtractorWeb.Site do
   def capture_from_agent do
     :timer.sleep(2000)
     agent_data = Agent.get( :collector, &List.first(&1) )
-    %{ title: agent_data.title, url: agent_data.url }
+    resp = LinkExtractorWeb.Repo.insert!( %LinkExtractorWeb.Site{ title: agent_data.title, url: agent_data.url } )
   end
 
   @doc """
