@@ -16,8 +16,9 @@ defmodule LinkExtractorWeb.MessagesController do
     end
 
     def index(conn, _params) do 
-      content = LinkExtractor.get_links
-      data = Poison.encode!(content)
-      text conn, data
+      # content = LinkExtractor.get_links
+      data = Repo.all( Site )
+      content = Poison.encode!(data)
+      text conn, content
     end
 end
