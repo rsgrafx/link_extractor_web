@@ -13,7 +13,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :link_extractor_web, LinkExtractorWeb.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80]
+  url: [host: "gastrotrition.com", port: 80]
   # cache_static_manifest: "priv/static/manifest.json"
 
 # ## SSL Support
